@@ -10,7 +10,20 @@ local options = {
     json = { "prettier" },
     yaml = { "prettier" },
     markdown = { "prettier" },
-    nix = { "nixfmt" },
+    nix = { "nix_fmt" },
+  },
+
+  formatters = {
+    -- Use the flake's own formatter (nixfmt-tree) instead of a standalone nixfmt binary
+    nix_fmt = {
+      command = "nix",
+      args = { "fmt", "--", "--stdin", "$FILENAME" },
+      stdin = true,
+      cwd = function(_, ctx)
+        return vim.fs.root(ctx.dirname, "flake.nix")
+      end,
+      require_cwd = true,
+    },
   },
 
   -- format_on_save = {
