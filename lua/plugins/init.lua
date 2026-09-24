@@ -34,19 +34,22 @@ return {
     lazy = false,
     dependencies = { "MunifTanjim/nui.nvim" },
     opts = {
-      -- less strict than defaults: warn instead of blocking the keypress,
-      -- and allow more repeats before nagging
       restriction_mode = "hint",
       max_count = 6,
       max_time = 1500,
+      disable_mouse = false,
+      disabled_keys = {
+        ["<Up>"] = false,
+        ["<Down>"] = false,
+        ["<Left>"] = false,
+        ["<Right>"] = false,
+      },
     },
   },
   {
     "tris203/precognition.nvim",
     event = "VeryLazy",
     opts = {
-      -- keep the 0 ^ $ w b e line hints, drop the per-character f/F/t/T
-      -- marks (they clutter lines with repeated characters)
       targetedMotionHints = { enabled = false },
     },
   },
