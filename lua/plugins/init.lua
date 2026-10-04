@@ -87,4 +87,24 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+
+  {
+    "nvim-mini/mini.nvim",
+    version = "*",
+  },
+
+  {
+    "jiaoshijie/undotree",
+    opts = {},
+    keys = { -- load the plugin only when using it's keybinding:
+      { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    version = "*",
+    opts = {},
+  },
+
 }
